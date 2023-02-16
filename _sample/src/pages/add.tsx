@@ -1,10 +1,20 @@
 import type { NextPage } from "next";
 import { ComponentProps } from "react";
+import { Dispatch, SetStateAction } from "react";
+import { Todo } from "src/types";
 
-const Add: NextPage = () => {
+type Props = {
+  setTodos: Dispatch<SetStateAction<Todo[]>>;
+};
+
+const Add: NextPage<Props> = ({ setTodos }) => {
   const handleSubmit: ComponentProps<"form">["onSubmit"] = (event) => {
     event.preventDefault();
     const text = event.currentTarget.text.value;
+    setTodos((prevTodos) => {
+      const newTodo = { id: prevTodos.length + 1, text, isDone: false };
+      return [...prevTodos, newTodo];
+    });
     event.currentTarget.reset();
   };
 
