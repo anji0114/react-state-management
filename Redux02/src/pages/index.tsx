@@ -14,7 +14,7 @@ const Home: NextPage<Props> = () => {
   const dispatch = useDispatch();
 
   const toggleIsDone = (id: Todo["id"]) => {
-    dispatch(toggleTodo(id));
+    dispatch(toggleTodo({id}));
   };
 
   return (
