@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
-import { Dispatch, SetStateAction } from "react";
-import { useStore } from "src/state/todo";
+
+import { Dispatch, SetStateAction, useEffect } from "react";
+import { useStore } from "src/state";
 import { Todo } from "src/types";
 
 type Props = {
@@ -11,6 +12,11 @@ type Props = {
 const Home: NextPage<Props> = () => {
   const todos = useStore((state) => state.todos);
   const toggleTodo = useStore((state) => state.toggleTodo);
+  const fetchUsers = useStore((state) => state.fetchUsers);
+
+  useEffect(() => {
+    fetchUsers();
+  }, [fetchUsers]);
 
   return (
     <div>

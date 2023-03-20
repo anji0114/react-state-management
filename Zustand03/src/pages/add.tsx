@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import { ComponentProps } from "react";
-import { useStore } from "src/state/todo";
+import { useStore } from "src/state";
 
 const Add: NextPage = () => {
   const addTodo = useStore((state) => state.addTodo);
